@@ -46,9 +46,10 @@ def getWordsFromTable(table):
     for row in table.rows:
         for cell in row.cells: 
             for paragraph in cell.paragraphs:  
-                for word in paragraph.text.split("\t"):
-                    if word != " " and word != "\n" and word != "":
-                        words.append(word)
+                for line in paragraph.text.split("\t"):
+                    for word in line.split(" "):
+                        if word != " " and word != "\n" and word != "":
+                            words.append(word)
     
     return words
 
